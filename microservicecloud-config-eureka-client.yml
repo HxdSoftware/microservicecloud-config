@@ -1,0 +1,38 @@
+﻿spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 9001
+
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureka9001.com
+  client:
+    register-with-eureka: false  # 当前的eureka-server自己不注册进服务列表中
+    fetch-registry: false  # 不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka9001.com:9001/eureka/
+---
+server:
+  port: 9001    # 注册中心占用9001端口
+
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureka9001.com
+  client:
+    register-with-eureka: false  # 当前的eureka-server自己不注册进服务列表中
+    fetch-registry: false  # 不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka9001.com:9001/eureka/
